@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="C:\Users\HP\AndroidStudioProjects\JBooks\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.0.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="00d4c8eebf2b681073c72a26bd0849549e51c7cb">
+        <dex dex="C:\Users\HP\AndroidStudioProjects\JBooks\app\build\intermediates\pre-dexed\debug\com.android.support-support-core-utils-25.0.1_3a7c04f0694fc6c4f152366bfe8b510cfb275953.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\HP\AndroidStudioProjects\JBooks\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.0.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="b24e1c688744078e1fa833ffadf696794761bbe5">
+        <dex dex="C:\Users\HP\AndroidStudioProjects\JBooks\app\build\intermediates\pre-dexed\debug\com.android.support-support-vector-drawable-25.0.1_6dbec36a41ab2994eb2639beedacd1c9d2c43dfb.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\HP\AndroidStudioProjects\JBooks\app\build\intermediates\exploded-aar\com.android.support\support-compat\25.0.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="51eba4a4dd73044f90a9d58dd7ca34adbebfcf4e">
+        <dex dex="C:\Users\HP\AndroidStudioProjects\JBooks\app\build\intermediates\pre-dexed\debug\com.android.support-support-compat-25.0.1_f04622f51178dec715d8f9a8ede02ef79fbb9c3c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\HP\AndroidStudioProjects\JBooks\app\build\intermediates\exploded-aar\com.android.support\design\25.0.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="3b236883e0df6002cabb01ce57d00a5b1e5de610">
+        <dex dex="C:\Users\HP\AndroidStudioProjects\JBooks\app\build\intermediates\pre-dexed\debug\com.android.support-design-25.0.1_89c57a632be1261e5feae617027739fe2e95f3e6.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\HP\AndroidStudioProjects\JBooks\app\build\intermediates\exploded-aar\com.android.support\support-fragment\25.0.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="26c6eef571592c91f29e56fda0bac73321de0c92">
+        <dex dex="C:\Users\HP\AndroidStudioProjects\JBooks\app\build\intermediates\pre-dexed\debug\com.android.support-support-fragment-25.0.1_79595863e6f9c091de1a02013a1745e3083b73fa.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\HP\AndroidStudioProjects\JBooks\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\25.0.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="297d4bcf6ed4e747a1bf7d0d094a2d911a8d3a8e">
+        <dex dex="C:\Users\HP\AndroidStudioProjects\JBooks\app\build\intermediates\pre-dexed\debug\com.android.support-recyclerview-v7-25.0.1_2758f27df1e5e47e544312f0f9a8df6856731ca0.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\HP\AndroidStudioProjects\JBooks\app\build\intermediates\exploded-aar\com.android.support\transition\25.0.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="c1b6ab157e8e12cb08b9ee82bb5e3c5d22632eb3">
+        <dex dex="C:\Users\HP\AndroidStudioProjects\JBooks\app\build\intermediates\pre-dexed\debug\com.android.support-transition-25.0.1_897d3d45a7f33a2707b15b8ebd29844163bde256.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\HP\AndroidStudioProjects\JBooks\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.0.1\jars\libs\internal_impl-25.0.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="c5b7145fb34779b6639147b8f2f8dd77c0db771b">
+        <dex dex="C:\Users\HP\AndroidStudioProjects\JBooks\app\build\intermediates\pre-dexed\debug\internal_impl-25.0.1_075ea7a06eea7faf641626a6251386f6e236eee2.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\HP\AndroidStudioProjects\JBooks\app\build\intermediates\exploded-aar\com.android.support\support-compat\25.0.1\jars\libs\internal_impl-25.0.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="3af8cc51ef7088e56f132780da8c0bd858b6a6ad">
+        <dex dex="C:\Users\HP\AndroidStudioProjects\JBooks\app\build\intermediates\pre-dexed\debug\internal_impl-25.0.1_6a34926dc0afe43ac0606f026a3eefe459c704c9.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\HP\.gradle\caches\modules-2\files-2.1\com.mcxiaoke.volley\library\1.0.19\a8f23f65fc1e522ee4a1a697ee569901a46741fa\library-1.0.19.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="a8f23f65fc1e522ee4a1a697ee569901a46741fa">
+        <dex dex="C:\Users\HP\AndroidStudioProjects\JBooks\app\build\intermediates\pre-dexed\debug\library-1.0.19_77e1688d0a98eb177ddce115da182e9999856c66.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\HP\AndroidStudioProjects\JBooks\app\build\intermediates\exploded-aar\com.android.support\support-fragment\25.0.1\jars\libs\internal_impl-25.0.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="c0bd6ffb002a85b5e7cad29f8558d1cc59539679">
+        <dex dex="C:\Users\HP\AndroidStudioProjects\JBooks\app\build\intermediates\pre-dexed\debug\internal_impl-25.0.1_b91dfc495362cc2219940d23d52f6c24de61cae8.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\HP\AndroidStudioProjects\JBooks\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.0.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="f7ac4b327fdb9e2ee386f5adc46164927658de4b">
+        <dex dex="C:\Users\HP\AndroidStudioProjects\JBooks\app\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-25.0.1_b343d4076724e1e2631d1f0909d40fb7dbf735a8.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\HP\AndroidStudioProjects\JBooks\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.0.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="6a1479afe9f1b3645e1cd9a87318976893472818">
+        <dex dex="C:\Users\HP\AndroidStudioProjects\JBooks\app\build\intermediates\pre-dexed\debug\com.android.support-support-media-compat-25.0.1_f55a1b20b4b620ee4ad679693c9985f055654788.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\HP\AndroidStudioProjects\JBooks\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.0.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="bc7e99e8d0fc279a05aa91378530f467ad62d443">
+        <dex dex="C:\Users\HP\AndroidStudioProjects\JBooks\app\build\intermediates\pre-dexed\debug\com.android.support-support-core-ui-25.0.1_c9671be2185fe23e02e23ba4ea97d49a99cdbbae.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\HP\AndroidStudioProjects\JBooks\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\25.0.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="772bed2d992b67b9d0327f766cc95cd63031dcd3">
+        <dex dex="C:\Users\HP\AndroidStudioProjects\JBooks\app\build\intermediates\pre-dexed\debug\com.android.support-animated-vector-drawable-25.0.1_ed09288ecb6097e1df499e963c56d535c37df06b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\HP\AndroidStudioProjects\JBooks\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.0.1\jars\libs\internal_impl-25.0.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="e5343c9d19cb19ff55f6b268c7f3fe8c9d224f6f">
+        <dex dex="C:\Users\HP\AndroidStudioProjects\JBooks\app\build\intermediates\pre-dexed\debug\internal_impl-25.0.1_32ff6154cf3cbeca537e3a948b55f84df8d2c8d3.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\HP\AppData\Local\Android\sdk1\extras\android\m2repository\com\android\support\support-annotations\25.0.1\support-annotations-25.0.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="a09194311f8f89c3e6db09d79f50897a889d615e">
+        <dex dex="C:\Users\HP\AndroidStudioProjects\JBooks\app\build\intermediates\pre-dexed\debug\support-annotations-25.0.1_9cadae496f52553facdf987770416a87bd43c362.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\HP\AndroidStudioProjects\JBooks\app\build\intermediates\exploded-aar\com.android.support\support-v4\25.0.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="C:\Users\HP\AndroidStudioProjects\JBooks\app\build\intermediates\pre-dexed\debug\com.android.support-support-v4-25.0.1_cb4d7764c544cda958f46fb716996492b8cd59cb.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\HP\AndroidStudioProjects\JBooks\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.0.1\jars\libs\internal_impl-25.0.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="f83b00041ecfba705603fec40363416c7de69719">
+        <dex dex="C:\Users\HP\AndroidStudioProjects\JBooks\app\build\intermediates\pre-dexed\debug\internal_impl-25.0.1_d5c97c5025adb4bc6012fe3b56b158e59025ba3c.jar" />
+    </item>
+
+</items>
