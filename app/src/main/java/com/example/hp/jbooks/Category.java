@@ -5,18 +5,23 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
+
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.widget.Toast;
@@ -31,20 +36,20 @@ public class Category extends AppCompatActivity {
     RecyclerView.Adapter recyclerViewadapter;
 
     ProgressBar progressBar;
-    String id="";
+    String id = "";
 
-    String HTTP_JSON_URL = "https://jbooks.000webhostapp.com/category_test.php";
+    String HTTP_JSON_URL = "https://jbooks.000webhostapp.com/category_test.php?subject=1";
 
     String GET_JSON_FROM_SERVER_NAME = "category";
     String GET_JSON_FROM_SERVER_ID = "id";
 
-    JsonArrayRequest jsonArrayRequest ;
+    JsonArrayRequest jsonArrayRequest;
 
-    RequestQueue requestQueue ;
+    RequestQueue requestQueue;
 
-    View ChildView ;
+    View ChildView;
 
-    int GetItemPosition ;
+    int GetItemPosition;
     int id_subject;
 
     ArrayList<String> CategoryNames;
@@ -83,26 +88,28 @@ public class Category extends AppCompatActivity {
 
             GestureDetector gestureDetector = new GestureDetector(Category.this, new GestureDetector.SimpleOnGestureListener() {
 
-                @Override public boolean onSingleTapUp(MotionEvent motionEvent) {
+                @Override
+                public boolean onSingleTapUp(MotionEvent motionEvent) {
 
                     return true;
                 }
 
             });
+
             @Override
             public boolean onInterceptTouchEvent(RecyclerView Recyclerview, MotionEvent motionEvent) {
 
                 ChildView = Recyclerview.findChildViewUnder(motionEvent.getX(), motionEvent.getY());
 
-                if(ChildView != null && gestureDetector.onTouchEvent(motionEvent)) {
+                if (ChildView != null && gestureDetector.onTouchEvent(motionEvent)) {
 
                     GetItemPosition = Recyclerview.getChildAdapterPosition(ChildView);
 
                     Toast.makeText(Category.this, CategoryNames.get(GetItemPosition), Toast.LENGTH_LONG).show();
                     //Toast.makeText(Category.this, id, Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(Category.this, Contents.class);
-                    intent.putExtra("id_subject",id_subject);
-                    intent.putExtra("category",CategoryNames.get(GetItemPosition));
+                    intent.putExtra("id_subject", id_subject);
+                    intent.putExtra("category", CategoryNames.get(GetItemPosition));
                     startActivity(intent);
                 }
 
@@ -122,7 +129,7 @@ public class Category extends AppCompatActivity {
 
     }
 
-    public void JSON_DATA_WEB_CALL(){
+    public void JSON_DATA_WEB_CALL() {
 
         jsonArrayRequest = new JsonArrayRequest(HTTP_JSON_URL,
 
@@ -130,6 +137,7 @@ public class Category extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONArray response) {
 
+                        Log.d("response", response.toString());
                         progressBar.setVisibility(View.GONE);
 
                         JSON_PARSE_DATA_AFTER_WEBCALL(response);
@@ -147,9 +155,9 @@ public class Category extends AppCompatActivity {
         requestQueue.add(jsonArrayRequest);
     }
 
-    public void JSON_PARSE_DATA_AFTER_WEBCALL(JSONArray array){
+    public void JSON_PARSE_DATA_AFTER_WEBCALL(JSONArray array) {
 
-        for(int i = 0; i<array.length(); i++) {
+        for (int i = 0; i < array.length(); i++) {
 
             subject_categories GetDataAdapter2 = new subject_categories();
 
@@ -160,9 +168,8 @@ public class Category extends AppCompatActivity {
                 GetDataAdapter2.setName(json.getString(GET_JSON_FROM_SERVER_NAME));
 
                 CategoryNames.add(json.getString(GET_JSON_FROM_SERVER_NAME));
-                id=json.getString(GET_JSON_FROM_SERVER_ID);
+                id = json.getString(GET_JSON_FROM_SERVER_ID);
                 //Toast.makeText(Category.this,json.getString(GET_JSON_FROM_SERVER_NAME)+" "+id, Toast.LENGTH_LONG).show();
-
 
 
             } catch (JSONException e) {

@@ -13,7 +13,7 @@
     },
     {
         "merged": "E:\\android_projects\\JBooks\\JBooks\\app\\build\\intermediates\\res\\merged\\debug\\layout-v21\\notification_action.xml",
-        "source": "E:\\android_projects\\JBooks\\JBooks\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\layout-v21\\notification_action.xml"
+        "source": "E:\\android_projects\\JBooks\\JBooks\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.3.1\\res\\layout-v21\\notification_action.xml"
     },
     {
         "merged": "C:\\Users\\HP\\AndroidStudioProjects\\JBooks\\app\\build\\intermediates\\res\\merged\\debug\\layout-v21\\notification_template_icon_group.xml",
@@ -21,14 +21,14 @@
     },
     {
         "merged": "E:\\android_projects\\JBooks\\JBooks\\app\\build\\intermediates\\res\\merged\\debug\\layout-v21\\notification_template_custom_big.xml",
-        "source": "E:\\android_projects\\JBooks\\JBooks\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\layout-v21\\notification_template_custom_big.xml"
+        "source": "E:\\android_projects\\JBooks\\JBooks\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.3.1\\res\\layout-v21\\notification_template_custom_big.xml"
     },
     {
         "merged": "E:\\android_projects\\JBooks\\JBooks\\app\\build\\intermediates\\res\\merged\\debug\\layout-v21\\notification_template_icon_group.xml",
-        "source": "E:\\android_projects\\JBooks\\JBooks\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\layout-v21\\notification_template_icon_group.xml"
+        "source": "E:\\android_projects\\JBooks\\JBooks\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.3.1\\res\\layout-v21\\notification_template_icon_group.xml"
     },
     {
         "merged": "E:\\android_projects\\JBooks\\JBooks\\app\\build\\intermediates\\res\\merged\\debug\\layout-v21\\notification_action_tombstone.xml",
-        "source": "E:\\android_projects\\JBooks\\JBooks\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\layout-v21\\notification_action_tombstone.xml"
+        "source": "E:\\android_projects\\JBooks\\JBooks\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.3.1\\res\\layout-v21\\notification_action_tombstone.xml"
     }
 ]
