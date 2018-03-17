@@ -9,6 +9,7 @@ import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -37,7 +38,7 @@ import javax.net.ssl.HttpsURLConnection;
 public class Login extends AppCompatActivity {
 EditText login;
     private String TAG = "network test";
-    Button signin_btn;
+    FloatingActionButton signin_btn;
     TextView signup;
     private Boolean firstTime = null;
     SharedPreferences sharedpreferences;
@@ -50,7 +51,7 @@ EditText login;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         login=(EditText)findViewById(R.id.login);
-        signin_btn=(Button) findViewById(R.id.signin_btn);
+        signin_btn=(FloatingActionButton) findViewById(R.id.signin_btn);
         signup=(TextView)findViewById(R.id.signup);
 
         signin_btn.setOnClickListener(new View.OnClickListener() {

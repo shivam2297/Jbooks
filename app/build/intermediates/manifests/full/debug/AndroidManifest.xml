@@ -40,14 +40,16 @@
             android:name="com.example.hp.jbooks.Mainfile"
             android:label="@string/title_activity_mainfile"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name="com.example.hp.jbooks.Login" />
+        <activity
+            android:name="com.example.hp.jbooks.Login"
+            android:theme="@style/NoActionBar" />
         <activity android:name="com.example.hp.jbooks.Category" />
         <activity android:name="com.example.hp.jbooks.AboutUs" />
         <activity
             android:name="com.example.hp.jbooks.Contents"
             android:label="@string/title_activity_contents" />
         <activity
-            android:name="com.example.hp.jbooks.WebView"
+            android:name="com.example.hp.jbooks.WebViewpdf"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_web_view"
             android:theme="@style/FullscreenTheme" />

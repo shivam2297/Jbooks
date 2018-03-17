@@ -1,8 +1,6 @@
 package com.example.hp.jbooks;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -24,22 +22,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLEncoder;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
-import javax.net.ssl.HttpsURLConnection;
-
 public class Contents extends AppCompatActivity {
-    List<subject_categories> categoryList;
+    List<subject_categories> contentList;
 
     RecyclerView recyclerView;
 
@@ -49,12 +36,13 @@ public class Contents extends AppCompatActivity {
 
     ProgressBar progressBar;
     String id = "";
+    String link = "";
 
-    String HTTP_JSON_URL = "https://jbooks.000webhostapp.com/category_test.php?subject=1";
-
-    String GET_JSON_FROM_SERVER_NAME = "category";
+    String HTTP_JSON_URL_BASE = "https://jbooks.000webhostapp.com/content_test.php?";
+    String HTTP_JSON_URL;
+    String GET_JSON_FROM_SERVER_NAME = "name";
     String GET_JSON_FROM_SERVER_ID = "id";
-
+    String GET_JSON_FROM_SERVER_LINK="link";
     JsonArrayRequest jsonArrayRequest;
 
     RequestQueue requestQueue;
@@ -63,8 +51,9 @@ public class Contents extends AppCompatActivity {
 
     int GetItemPosition;
     int id_subject;
+    int id_category;
 
-    ArrayList<String> CategoryNames;
+    ArrayList<String> ContentNames;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,10 +64,11 @@ public class Contents extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             id_subject = extras.getInt("id_subject");
+            id_category=extras.getInt("category");
             //The key argument here must match that used in the other activity
         }
-
-        categoryList = new ArrayList<>();
+        HTTP_JSON_URL=HTTP_JSON_URL_BASE+"subject=0&"+"category=0";
+        contentList = new ArrayList<>();
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView1);
 
@@ -92,7 +82,7 @@ public class Contents extends AppCompatActivity {
 
         progressBar.setVisibility(View.VISIBLE);
 
-        CategoryNames = new ArrayList<>();
+        ContentNames = new ArrayList<>();
 
         JSON_DATA_WEB_CALL();
 
@@ -117,11 +107,10 @@ public class Contents extends AppCompatActivity {
 
                     GetItemPosition = Recyclerview.getChildAdapterPosition(ChildView);
 
-                    Toast.makeText(Contents.this, CategoryNames.get(GetItemPosition), Toast.LENGTH_LONG).show();
+                    Toast.makeText(Contents.this, ContentNames.get(GetItemPosition), Toast.LENGTH_LONG).show();
                     //Toast.makeText(Category.this, id, Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(Contents.this, Contents.class);
-                    intent.putExtra("id_subject", id_subject);
-                    intent.putExtra("category", CategoryNames.get(GetItemPosition));
+                    Intent intent = new Intent(Contents.this, WebViewpdf.class);
+                    intent.putExtra("link", link);
                     startActivity(intent);
                 }
 
@@ -179,8 +168,9 @@ public class Contents extends AppCompatActivity {
 
                 GetDataAdapter2.setName(json.getString(GET_JSON_FROM_SERVER_NAME));
 
-                CategoryNames.add(json.getString(GET_JSON_FROM_SERVER_NAME));
+                ContentNames.add(json.getString(GET_JSON_FROM_SERVER_NAME));
                 id = json.getString(GET_JSON_FROM_SERVER_ID);
+                link=json.getString(GET_JSON_FROM_SERVER_LINK);
                 //Toast.makeText(Category.this,json.getString(GET_JSON_FROM_SERVER_NAME)+" "+id, Toast.LENGTH_LONG).show();
 
 
@@ -188,10 +178,10 @@ public class Contents extends AppCompatActivity {
 
                 e.printStackTrace();
             }
-            categoryList.add(GetDataAdapter2);
+            contentList.add(GetDataAdapter2);
         }
 
-        recyclerViewadapter = new RecyclerViewCardViewAdapter(categoryList, this);
+        recyclerViewadapter = new RecyclerViewCardViewAdapter(contentList, this);
 
         recyclerView.setAdapter(recyclerViewadapter);
 

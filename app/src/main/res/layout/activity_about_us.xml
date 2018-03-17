@@ -31,7 +31,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_margin="20sp"
         android:layout_weight="1"
-        android:background="@drawable/textviewbackground"
+        android:background="@drawable/textview_background"
         android:padding="20sp"
         android:textColor="#0a408a"
         android:textSize="18sp" />

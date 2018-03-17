@@ -18,7 +18,8 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="46dp"
-        android:id="@+id/name" />
+        android:id="@+id/name"
+        android:hint="name"/>
 
     <EditText
         android:layout_width="wrap_content"
@@ -28,7 +29,8 @@
         android:layout_below="@+id/name"
         android:layout_alignStart="@+id/name"
         android:layout_marginTop="32dp"
-        android:id="@+id/phn_no" />
+        android:id="@+id/phn_no"
+        android:hint="phone"/>
 
     <EditText
         android:layout_width="wrap_content"
@@ -38,7 +40,8 @@
         android:layout_below="@+id/phn_no"
         android:layout_alignStart="@+id/phn_no"
         android:layout_marginTop="25dp"
-        android:id="@+id/email" />
+        android:id="@+id/email"
+        android:hint="email"/>
 
     <EditText
         android:layout_width="wrap_content"
@@ -48,7 +51,8 @@
         android:layout_below="@+id/email"
         android:layout_alignStart="@+id/email"
         android:layout_marginTop="31dp"
-        android:id="@+id/school_name" />
+        android:id="@+id/school_name"
+        android:hint="school name"/>
 
     <Spinner
         android:layout_width="wrap_content"
@@ -61,7 +65,7 @@
         android:id="@+id/subject" />
 
     <Button
-        android:text="Button"
+        android:text="button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

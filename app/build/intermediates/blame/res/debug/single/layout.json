@@ -16,12 +16,12 @@
         "source": "E:\\android_projects\\JBooks\\JBooks\\app\\src\\main\\res\\layout\\activity_mainfile.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\JBooks\\app\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_multichoice_material.xml",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\JBooks\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\layout\\select_dialog_multichoice_material.xml"
-    },
-    {
         "merged": "C:\\Users\\HP\\AndroidStudioProjects\\JBooks\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_big_media_narrow_custom.xml",
         "source": "C:\\Users\\HP\\AndroidStudioProjects\\JBooks\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\layout\\notification_template_big_media_narrow_custom.xml"
+    },
+    {
+        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\JBooks\\app\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_multichoice_material.xml",
+        "source": "C:\\Users\\HP\\AndroidStudioProjects\\JBooks\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\layout\\select_dialog_multichoice_material.xml"
     },
     {
         "merged": "E:\\android_projects\\JBooks\\JBooks\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_faculty_form.xml",

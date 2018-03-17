@@ -38,9 +38,9 @@ public class Category extends AppCompatActivity {
     ProgressBar progressBar;
     String id = "";
 
-    String HTTP_JSON_URL = "https://jbooks.000webhostapp.com/category_test.php?subject=1";
-
-    String GET_JSON_FROM_SERVER_NAME = "category";
+    String HTTP_JSON_URL_BASE = "https://jbooks.000webhostapp.com/category_test.php?";
+    String HTTP_JSON_URL;
+    String GET_JSON_FROM_SERVER_NAME = "name";
     String GET_JSON_FROM_SERVER_ID = "id";
 
     JsonArrayRequest jsonArrayRequest;
@@ -53,6 +53,7 @@ public class Category extends AppCompatActivity {
     int id_subject;
 
     ArrayList<String> CategoryNames;
+    ArrayList<String> CategoryIds;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +66,13 @@ public class Category extends AppCompatActivity {
             id_subject = extras.getInt("id_subject");
             //The key argument here must match that used in the other activity
         }
-
+        if (id_subject==1){
+            HTTP_JSON_URL=HTTP_JSON_URL_BASE+"subject=0";
+        }else if (id_subject==2){
+            HTTP_JSON_URL=HTTP_JSON_URL_BASE+"subject=0";
+        }else {
+            HTTP_JSON_URL=HTTP_JSON_URL_BASE+"subject=0";
+        }
         categoryList = new ArrayList<>();
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView1);
@@ -81,6 +88,7 @@ public class Category extends AppCompatActivity {
         progressBar.setVisibility(View.VISIBLE);
 
         CategoryNames = new ArrayList<>();
+        CategoryIds=new ArrayList<>();
 
         JSON_DATA_WEB_CALL();
 
@@ -106,10 +114,11 @@ public class Category extends AppCompatActivity {
                     GetItemPosition = Recyclerview.getChildAdapterPosition(ChildView);
 
                     Toast.makeText(Category.this, CategoryNames.get(GetItemPosition), Toast.LENGTH_LONG).show();
+                    Toast.makeText(Category.this, CategoryIds.get(GetItemPosition), Toast.LENGTH_LONG).show();
                     //Toast.makeText(Category.this, id, Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(Category.this, Contents.class);
                     intent.putExtra("id_subject", id_subject);
-                    intent.putExtra("category", CategoryNames.get(GetItemPosition));
+                    intent.putExtra("category", CategoryIds.get(GetItemPosition));
                     startActivity(intent);
                 }
 
@@ -168,6 +177,7 @@ public class Category extends AppCompatActivity {
                 GetDataAdapter2.setName(json.getString(GET_JSON_FROM_SERVER_NAME));
 
                 CategoryNames.add(json.getString(GET_JSON_FROM_SERVER_NAME));
+                CategoryIds.add(json.getString(GET_JSON_FROM_SERVER_ID));
                 id = json.getString(GET_JSON_FROM_SERVER_ID);
                 //Toast.makeText(Category.this,json.getString(GET_JSON_FROM_SERVER_NAME)+" "+id, Toast.LENGTH_LONG).show();
 
