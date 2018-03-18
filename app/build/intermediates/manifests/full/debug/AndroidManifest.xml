@@ -33,9 +33,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.hp.jbooks.Faculty_form" />
-        <activity android:name="com.example.hp.jbooks.Parent_form" />
-        <activity android:name="com.example.hp.jbooks.Student_form" />
+        <activity
+            android:name="com.example.hp.jbooks.Faculty_form"
+            android:theme="@style/NoActionBar" />
+        <activity
+            android:name="com.example.hp.jbooks.Parent_form"
+            android:theme="@style/NoActionBar" />
+        <activity
+            android:name="com.example.hp.jbooks.Student_form"
+            android:theme="@style/NoActionBar" />
         <activity
             android:name="com.example.hp.jbooks.Mainfile"
             android:label="@string/title_activity_mainfile"

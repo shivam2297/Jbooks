@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -41,7 +42,7 @@ import javax.net.ssl.HttpsURLConnection;
 public class Faculty_form extends AppCompatActivity implements AdapterView.OnItemClickListener{
     EditText name,phn_no,email,school_name;
     Spinner subject;
-    Button faculty_submit_btn;
+    FloatingActionButton faculty_submit_btn;
     private ProgressDialog pDialog;
     private String TAG = "network test";
 
@@ -54,7 +55,7 @@ public class Faculty_form extends AppCompatActivity implements AdapterView.OnIte
         email = (EditText) findViewById(R.id.email);
         school_name = (EditText) findViewById(R.id.school_name);
         subject = (Spinner) findViewById(R.id.subject);
-        faculty_submit_btn = (Button) findViewById(R.id.faculty_submit_btn);
+        faculty_submit_btn = (FloatingActionButton) findViewById(R.id.faculty_submit_btn);
 
         faculty_submit_btn.setOnClickListener(new View.OnClickListener() {
             @Override

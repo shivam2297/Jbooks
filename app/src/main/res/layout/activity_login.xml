@@ -93,7 +93,6 @@
         android:id="@+id/signin_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sign In"
         app:elevation="16dp"
         app:fabSize="normal"
         app:layout_constraintBottom_toBottomOf="@id/center_panel"

@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -40,7 +41,7 @@ public class Student_form extends AppCompatActivity {
     EditText name, phn_no, email, parent_name, parent_no, parent_email, school_name, role;
     Spinner stream,yop;
     private String TAG = "network test";
-    Button parent_submit_btn;
+    FloatingActionButton parent_submit_btn;
     private ProgressDialog pDialog;
 
     @Override
@@ -56,7 +57,7 @@ public class Student_form extends AppCompatActivity {
         school_name=(EditText)findViewById(R.id.school_name);
         stream=(Spinner) findViewById(R.id.stream);
         yop=(Spinner) findViewById(R.id.yop);
-        parent_submit_btn=(Button)findViewById(R.id.parent_submit_btn);
+        parent_submit_btn= (FloatingActionButton) findViewById(R.id.parent_submit_btn);
 
         parent_submit_btn.setOnClickListener(new View.OnClickListener() {
             @Override
