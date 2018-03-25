@@ -7,19 +7,20 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-    Button faculty_role_btn,parent_role_btn,student_role_btn;
+    ImageView faculty_role_btn,parent_role_btn,student_role_btn;
     TextView login_btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        faculty_role_btn = (Button) findViewById(R.id.faculty_role_btn);
-        parent_role_btn = (Button) findViewById(R.id.parent_role_btn);
-        student_role_btn = (Button) findViewById(R.id.student_role_btn);
+        faculty_role_btn = (ImageView) findViewById(R.id.faculty_role_btn);
+        parent_role_btn = (ImageView) findViewById(R.id.parent_role_btn);
+        student_role_btn = (ImageView) findViewById(R.id.student_role_btn);
         login_btn = (TextView) findViewById(R.id.login_btn);
 
         login_btn.setOnClickListener(new View.OnClickListener() {

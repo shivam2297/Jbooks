@@ -28,4 +28,13 @@
     <string name="title_activity_web_view">WebView</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+
+    <!-- Strings related to network -->
+    <string name="base_url">https://jbooks.000webhostapp.com/</string>
+    <string name="login_path">isactive.php</string>
+    <string name="signup_path">form_api_test.php</string>
+    <string name="category_path">category_test.php?</string>
+    <string name="content_path">content_test.php?</string>
+    <string name="subject_id_query">subject=</string>
+    <string name="category_id_query">category=</string>
 </resources>

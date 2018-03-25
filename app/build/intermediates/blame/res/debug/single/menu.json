@@ -1,9 +1,5 @@
 [
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\JBooks\\app\\build\\intermediates\\res\\merged\\debug\\menu\\activity_mainfile_drawer.xml",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\JBooks\\app\\src\\main\\res\\menu\\activity_mainfile_drawer.xml"
-    },
-    {
         "merged": "E:\\android_projects\\JBooks\\JBooks\\app\\build\\intermediates\\res\\merged\\debug\\menu\\activity_mainfile_drawer.xml",
         "source": "E:\\android_projects\\JBooks\\JBooks\\app\\src\\main\\res\\menu\\activity_mainfile_drawer.xml"
     }

@@ -1,9 +1,5 @@
 [
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\JBooks\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi\\ic_launcher.png",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\JBooks\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
-    },
-    {
         "merged": "E:\\android_projects\\JBooks\\JBooks\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi\\ic_launcher.png",
         "source": "E:\\android_projects\\JBooks\\JBooks\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
     }

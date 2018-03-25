@@ -1,9 +1,5 @@
 [
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\JBooks\\app\\build\\intermediates\\res\\merged\\debug\\layout-sw600dp-v13\\design_layout_snackbar.xml",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\JBooks\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.0.1\\res\\layout-sw600dp-v13\\design_layout_snackbar.xml"
-    },
-    {
         "merged": "E:\\android_projects\\JBooks\\JBooks\\app\\build\\intermediates\\res\\merged\\debug\\layout-sw600dp-v13\\design_layout_snackbar.xml",
         "source": "E:\\android_projects\\JBooks\\JBooks\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.0.1\\res\\layout-sw600dp-v13\\design_layout_snackbar.xml"
     }
