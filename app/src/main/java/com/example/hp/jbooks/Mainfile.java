@@ -22,22 +22,19 @@ import org.w3c.dom.Text;
 public class Mainfile extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    //TextView nameheader,emailheader;
+    TextView nameheader, emailheader;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mainfile);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        //nameheader=(TextView)findViewById(R.id.nameheader);
-        //emailheader=(TextView)findViewById(R.id.emailheader);
         Intent intent = getIntent();
         String name = intent.getStringExtra("name");
         String email = intent.getStringExtra("email");
-        Toast.makeText(getApplicationContext(), name+" "+email,
+        Toast.makeText(getApplicationContext(), name + " " + email,
                 Toast.LENGTH_LONG).show();
-        //nameheader.setText(name);
-        //emailheader.setText(email);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -47,6 +44,13 @@ public class Mainfile extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        View headerLayout = navigationView.getHeaderView(0);
+        nameheader = (TextView) headerLayout.findViewById(R.id.nameheader);
+        emailheader = (TextView) headerLayout.findViewById(R.id.emailheader);
+
+        nameheader.setText(name);
+        emailheader.setText(email);
     }
 
     @Override
@@ -78,22 +82,22 @@ public class Mainfile extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_physics) {
-            Intent intent=new Intent(Mainfile.this,Category.class);
-            intent.putExtra("id_subject",1);
+            Intent intent = new Intent(Mainfile.this, Category.class);
+            intent.putExtra("id_subject", 1);
             startActivity(intent);
         } else if (id == R.id.nav_chemistry) {
-            Intent intent=new Intent(Mainfile.this,Category.class);
-            intent.putExtra("id_subject",2);
+            Intent intent = new Intent(Mainfile.this, Category.class);
+            intent.putExtra("id_subject", 2);
             startActivity(intent);
         } else if (id == R.id.nav_maths) {
-            Intent intent=new Intent(Mainfile.this,Category.class);
-            intent.putExtra("id_subject",3);
+            Intent intent = new Intent(Mainfile.this, Category.class);
+            intent.putExtra("id_subject", 3);
             startActivity(intent);
         } else if (id == R.id.nav_aboutus) {
-            Intent intent=new Intent(Mainfile.this,AboutUs.class);
+            Intent intent = new Intent(Mainfile.this, AboutUs.class);
             startActivity(intent);
         } else if (id == R.id.nav_logout) {
-            Intent intent=new Intent(Mainfile.this,MainActivity.class);
+            Intent intent = new Intent(Mainfile.this, MainActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_share) {
             ShareCompat.IntentBuilder
@@ -102,8 +106,6 @@ public class Mainfile extends AppCompatActivity
                     .setChooserTitle("Share Via")
                     .setText("")
                     .startChooser();
-        } else if (id == R.id.nav_send) {
-
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
