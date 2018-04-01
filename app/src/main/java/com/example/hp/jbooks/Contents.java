@@ -26,7 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Contents extends AppCompatActivity {
-    List<subject_categories> contentList;
+    List<Subject_Contents> contentList;
 
     RecyclerView recyclerView;
 
@@ -35,14 +35,13 @@ public class Contents extends AppCompatActivity {
     RecyclerView.Adapter recyclerViewadapter;
 
     ProgressBar progressBar;
-    String id = "";
-    String link = "";
 
     String HTTP_JSON_URL_BASE = "https://jbooks.000webhostapp.com/content_test.php?";
     String HTTP_JSON_URL;
     String GET_JSON_FROM_SERVER_NAME = "name";
     String GET_JSON_FROM_SERVER_ID = "id";
-    String GET_JSON_FROM_SERVER_LINK="link";
+    String GET_JSON_FROM_SERVER_LINK = "link";
+    String GET_JSON_FROM_SERVER_DESCRIPTION = "description";
     JsonArrayRequest jsonArrayRequest;
 
     RequestQueue requestQueue;
@@ -53,8 +52,6 @@ public class Contents extends AppCompatActivity {
     int id_subject;
     int id_category;
 
-    ArrayList<String> ContentNames;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,10 +61,10 @@ public class Contents extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             id_subject = extras.getInt("id_subject");
-            id_category=extras.getInt("category");
+            id_category = extras.getInt("category");
             //The key argument here must match that used in the other activity
         }
-        HTTP_JSON_URL=HTTP_JSON_URL_BASE+"subject=0&"+"category=0";
+        HTTP_JSON_URL = HTTP_JSON_URL_BASE + "subject=0&" + "category=0";
         contentList = new ArrayList<>();
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView1);
@@ -81,8 +78,6 @@ public class Contents extends AppCompatActivity {
         recyclerView.setLayoutManager(recyclerViewlayoutManager);
 
         progressBar.setVisibility(View.VISIBLE);
-
-        ContentNames = new ArrayList<>();
 
         JSON_DATA_WEB_CALL();
 
@@ -107,8 +102,9 @@ public class Contents extends AppCompatActivity {
 
                     GetItemPosition = Recyclerview.getChildAdapterPosition(ChildView);
 
-                    Toast.makeText(Contents.this, ContentNames.get(GetItemPosition), Toast.LENGTH_LONG).show();
+                    Toast.makeText(Contents.this, contentList.get(GetItemPosition).getName(), Toast.LENGTH_LONG).show();
                     //Toast.makeText(Category.this, id, Toast.LENGTH_LONG).show();
+                    String link = contentList.get(GetItemPosition).getLink();
                     Intent intent = new Intent(Contents.this, WebViewpdf.class);
                     intent.putExtra("link", link);
                     startActivity(intent);
@@ -160,17 +156,14 @@ public class Contents extends AppCompatActivity {
 
         for (int i = 0; i < array.length(); i++) {
 
-            subject_categories GetDataAdapter2 = new subject_categories();
+            Subject_Contents GetDataAdapter2 = new Subject_Contents();
 
             JSONObject json = null;
             try {
                 json = array.getJSONObject(i);
-
+                GetDataAdapter2.setId(json.getString(GET_JSON_FROM_SERVER_ID));
                 GetDataAdapter2.setName(json.getString(GET_JSON_FROM_SERVER_NAME));
-
-                ContentNames.add(json.getString(GET_JSON_FROM_SERVER_NAME));
-                id = json.getString(GET_JSON_FROM_SERVER_ID);
-                link=json.getString(GET_JSON_FROM_SERVER_LINK);
+                GetDataAdapter2.setLink(GET_JSON_FROM_SERVER_LINK);
                 //Toast.makeText(Category.this,json.getString(GET_JSON_FROM_SERVER_NAME)+" "+id, Toast.LENGTH_LONG).show();
 
 
@@ -181,7 +174,7 @@ public class Contents extends AppCompatActivity {
             contentList.add(GetDataAdapter2);
         }
 
-        recyclerViewadapter = new RecyclerViewCardViewAdapter(contentList, this);
+        recyclerViewadapter = new Content_Adapter(contentList, this);
 
         recyclerView.setAdapter(recyclerViewadapter);
 

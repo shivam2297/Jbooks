@@ -27,7 +27,7 @@ import android.view.MotionEvent;
 import android.widget.Toast;
 
 public class Category extends AppCompatActivity {
-    List<subject_categories> categoryList;
+    List<Subject_Categories> categoryList;
 
     RecyclerView recyclerView;
 
@@ -168,7 +168,7 @@ public class Category extends AppCompatActivity {
 
         for (int i = 0; i < array.length(); i++) {
 
-            subject_categories GetDataAdapter2 = new subject_categories();
+            Subject_Categories GetDataAdapter2 = new Subject_Categories();
 
             JSONObject json = null;
             try {
@@ -189,7 +189,7 @@ public class Category extends AppCompatActivity {
             categoryList.add(GetDataAdapter2);
         }
 
-        recyclerViewadapter = new RecyclerViewCardViewAdapter(categoryList, this);
+        recyclerViewadapter = new Category_Adapter(categoryList, this);
 
         recyclerView.setAdapter(recyclerViewadapter);
 

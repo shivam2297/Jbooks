@@ -14,12 +14,25 @@
         android:orientation="vertical"
         app:layout_constraintGuide_begin="@dimen/activity_horizontal_margin" />
 
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="@dimen/activity_horizontal_margin" />
+
+    <ImageView
+        android:layout_width="114dp"
+        android:layout_height="55dp"
+        android:src="@drawable/mukand_logo_white65_114_55"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4" />
+
     <TextView
         android:id="@+id/nameheader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:elevation="8dp"
+        android:elevation="2dp"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
         android:text="SHIVAM BANSAL"
         android:textAllCaps="true"
@@ -34,7 +47,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:elevation="8dp"
+        android:elevation="2dp"
         android:text="shivam2297@gmail.com"
         android:textColor="#ffffff"
         android:textSize="14sp"

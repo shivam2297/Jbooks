@@ -106,6 +106,9 @@ public class Mainfile extends AppCompatActivity
                     .setChooserTitle("Share Via")
                     .setText("")
                     .startChooser();
+        } else if (id == R.id.nav_feedback) {
+            Intent intent = new Intent(Mainfile.this, Feedback.class);
+            startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

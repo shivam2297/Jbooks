@@ -9,6 +9,9 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:orientation="vertical"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@color/colorPrimaryLight"
+    android:backgroundTint="#ccffffff"
+    android:backgroundTintMode="src_over"
     tools:context="com.example.hp.jbooks.AboutUs">
     <TextView
         android:id="@+id/aboutus_text"

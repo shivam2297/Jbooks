@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from E:\android_projects\JBooks\JBooks\app\src\main\AndroidManifest.xml:2:1-56:12
+ADDED from E:\android_projects\JBooks\JBooks\app\src\main\AndroidManifest.xml:2:1-57:12
 	package
 		ADDED from E:\android_projects\JBooks\JBooks\app\src\main\AndroidManifest.xml:3:5-36
 		INJECTED from E:\android_projects\JBooks\JBooks\app\src\main\AndroidManifest.xml
@@ -34,7 +34,7 @@ ADDED from E:\android_projects\JBooks\JBooks\app\src\main\AndroidManifest.xml:11
 	android:name
 		ADDED from E:\android_projects\JBooks\JBooks\app\src\main\AndroidManifest.xml:11:22-69
 application
-ADDED from E:\android_projects\JBooks\JBooks\app\src\main\AndroidManifest.xml:13:5-54:19
+ADDED from E:\android_projects\JBooks\JBooks\app\src\main\AndroidManifest.xml:13:5-55:19
 MERGED from [com.android.support.constraint:constraint-layout:1.0.2] E:\android_projects\JBooks\JBooks\app\build\intermediates\exploded-aar\com.android.support.constraint\constraint-layout\1.0.2\AndroidManifest.xml:9:5-20
 MERGED from [com.android.support:design:25.0.1] E:\android_projects\JBooks\JBooks\app\build\intermediates\exploded-aar\com.android.support\design\25.0.1\AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:appcompat-v7:25.3.1] E:\android_projects\JBooks\JBooks\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.3.1\AndroidManifest.xml:29:5-20
@@ -120,7 +120,7 @@ ADDED from E:\android_projects\JBooks\JBooks\app\src\main\AndroidManifest.xml:46
 	android:name
 		ADDED from E:\android_projects\JBooks\JBooks\app\src\main\AndroidManifest.xml:47:13-37
 activity#com.example.hp.jbooks.WebViewpdf
-ADDED from E:\android_projects\JBooks\JBooks\app\src\main\AndroidManifest.xml:49:9-53:63
+ADDED from E:\android_projects\JBooks\JBooks\app\src\main\AndroidManifest.xml:49:9-53:54
 	android:label
 		ADDED from E:\android_projects\JBooks\JBooks\app\src\main\AndroidManifest.xml:52:13-60
 	android:configChanges
@@ -129,6 +129,10 @@ ADDED from E:\android_projects\JBooks\JBooks\app\src\main\AndroidManifest.xml:49
 		ADDED from E:\android_projects\JBooks\JBooks\app\src\main\AndroidManifest.xml:53:13-51
 	android:name
 		ADDED from E:\android_projects\JBooks\JBooks\app\src\main\AndroidManifest.xml:50:13-39
+activity#com.example.hp.jbooks.Feedback
+ADDED from E:\android_projects\JBooks\JBooks\app\src\main\AndroidManifest.xml:54:9-55
+	android:name
+		ADDED from E:\android_projects\JBooks\JBooks\app\src\main\AndroidManifest.xml:54:19-43
 uses-sdk
 INJECTED from E:\android_projects\JBooks\JBooks\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.support.constraint:constraint-layout:1.0.2] E:\android_projects\JBooks\JBooks\app\build\intermediates\exploded-aar\com.android.support.constraint\constraint-layout\1.0.2\AndroidManifest.xml:5:5-7:41
