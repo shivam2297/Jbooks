@@ -73,8 +73,12 @@
             android:layout_height="65dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
+            android:background="@color/colorAccent"
             android:clickable="true"
+            android:elevation="2dp"
+            android:padding="4dp"
             android:src="@drawable/student"
+            android:translationZ="8dp"
             app:layout_constraintBottom_toTopOf="@+id/faculty_role_btn"
             app:layout_constraintEnd_toStartOf="@+id/parent_role_btn"
             app:layout_constraintStart_toStartOf="@+id/guideline"
@@ -96,11 +100,15 @@
             android:layout_width="65dp"
             android:layout_height="65dp"
             android:layout_marginEnd="8dp"
+            android:background="@color/colorAccent"
             android:clickable="true"
+            android:elevation="2dp"
+            android:padding="4dp"
             android:src="@drawable/parent"
+            android:translationZ="8dp"
             app:layout_constraintEnd_toStartOf="@+id/guideline2"
             app:layout_constraintStart_toEndOf="@id/student_role_btn"
-            app:layout_constraintTop_toTopOf="@id/student_role_btn"/>
+            app:layout_constraintTop_toTopOf="@id/student_role_btn" />
 
         <TextView
             android:id="@+id/parent_text"
@@ -112,28 +120,34 @@
             app:layout_constraintLeft_toLeftOf="@id/parent_role_btn"
             app:layout_constraintRight_toRightOf="@id/parent_role_btn"
             app:layout_constraintTop_toBottomOf="@id/parent_role_btn" />
+
         <ImageView
             android:id="@+id/faculty_role_btn"
             android:layout_width="65dp"
             android:layout_height="65dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
+            android:background="@color/colorAccent"
             android:clickable="true"
+            android:elevation="2dp"
+            android:padding="4dp"
             android:src="@drawable/teacher"
+            android:translationZ="8dp"
             app:layout_constraintBottom_toTopOf="@+id/login_btn"
             app:layout_constraintEnd_toStartOf="@+id/guideline2"
             app:layout_constraintStart_toStartOf="@+id/guideline"
             app:layout_constraintTop_toTopOf="@id/student_role_btn" />
+
         <TextView
+            android:id="@+id/faculty_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/faculty_text"
-            android:textSize="12sp"
             android:text="TEACHER"
             android:textColor="#ffffff"
-            app:layout_constraintTop_toBottomOf="@id/faculty_role_btn"
+            android:textSize="12sp"
+            app:layout_constraintLeft_toLeftOf="@id/faculty_role_btn"
             app:layout_constraintRight_toRightOf="@id/faculty_role_btn"
-            app:layout_constraintLeft_toLeftOf="@id/faculty_role_btn"/>
+            app:layout_constraintTop_toBottomOf="@id/faculty_role_btn" />
 
         <TextView
             android:id="@+id/login_btn"

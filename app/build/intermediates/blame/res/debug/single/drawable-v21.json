@@ -16,10 +16,6 @@
         "source": "E:\\android_projects\\JBooks\\JBooks\\app\\src\\main\\res\\drawable-v21\\ic_menu_camera.xml"
     },
     {
-        "merged": "E:\\android_projects\\JBooks\\JBooks\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21\\ic_perm_identity_white_48dp.png",
-        "source": "E:\\android_projects\\JBooks\\JBooks\\app\\src\\main\\res\\drawable-v21\\ic_perm_identity_white_48dp.png"
-    },
-    {
         "merged": "E:\\android_projects\\JBooks\\JBooks\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21\\design_bottom_navigation_item_background.xml",
         "source": "E:\\android_projects\\JBooks\\JBooks\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.0.1\\res\\drawable-v21\\design_bottom_navigation_item_background.xml"
     },

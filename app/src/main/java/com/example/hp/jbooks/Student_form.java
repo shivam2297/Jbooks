@@ -14,7 +14,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -48,7 +47,7 @@ public class Student_form extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_form);
-        name=(EditText)findViewById(R.id.name);
+        name=(EditText)findViewById(R.id.recent_name);
         phn_no=(EditText)findViewById(R.id.phn_no);
         email=(EditText)findViewById(R.id.email);
         parent_email=(EditText)findViewById(R.id.parent_email);

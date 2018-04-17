@@ -9,17 +9,17 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.TextInputEditText;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -39,8 +39,9 @@ import java.util.List;
 
 import javax.net.ssl.HttpsURLConnection;
 
-public class Faculty_form extends AppCompatActivity implements AdapterView.OnItemClickListener{
-    EditText name,phn_no,email,school_name;
+public class Faculty_form extends AppCompatActivity implements AdapterView.OnItemClickListener {
+    TextInputEditText name, phn_no, email, school_name;
+    TextInputLayout nameInputLayout, phoneInputLayout, emailInputLayout, schoolInputLayout;
     Spinner subject;
     FloatingActionButton faculty_submit_btn;
     private ProgressDialog pDialog;
@@ -50,53 +51,60 @@ public class Faculty_form extends AppCompatActivity implements AdapterView.OnIte
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_faculty_form);
-        name = (EditText) findViewById(R.id.name);
-        phn_no = (EditText) findViewById(R.id.phn_no);
-        email = (EditText) findViewById(R.id.email);
-        school_name = (EditText) findViewById(R.id.school_name);
+
+        nameInputLayout = (TextInputLayout) findViewById(R.id.input_layout_name);
+        phoneInputLayout = (TextInputLayout) findViewById(R.id.input_layout_phone);
+        emailInputLayout = (TextInputLayout) findViewById(R.id.input_layout_email);
+        schoolInputLayout = (TextInputLayout) findViewById(R.id.input_layout_school);
+
+        name = (TextInputEditText) findViewById(R.id.recent_name);
+        phn_no = (TextInputEditText) findViewById(R.id.phn_no);
+        email = (TextInputEditText) findViewById(R.id.email);
+        school_name = (TextInputEditText) findViewById(R.id.school_name);
         subject = (Spinner) findViewById(R.id.subject);
         faculty_submit_btn = (FloatingActionButton) findViewById(R.id.faculty_submit_btn);
+
+        name.addTextChangedListener(new MyTextWatcher(name));
+        phn_no.addTextChangedListener(new MyTextWatcher(phn_no));
+        email.addTextChangedListener(new MyTextWatcher(email));
+        school_name.addTextChangedListener(new MyTextWatcher(school_name));
 
         faculty_submit_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                boolean allvalid=true;
+                boolean allvalid = true;
                 if (name.getText().toString().matches("") || phn_no.getText().toString().matches("") || email.getText().toString().matches("") || school_name.getText().toString().matches("")) {
-                    allvalid=false;
-                    Toast.makeText(getApplicationContext(), "Fill All The Blanks", Toast.LENGTH_SHORT).show();
+                    allvalid = false;
+                    Toast.makeText(getApplicationContext(), "Please fill all the information", Toast.LENGTH_SHORT).show();
                 }
-                if(phn_no.getText().toString().length() < 7 || phn_no.getText().toString().length() > 13) {
-                    allvalid=false;
-                    Toast.makeText(getApplicationContext(), "check your Phone Number", Toast.LENGTH_SHORT).show();
+                if (!validateEmail() || !validateName() || !validatePhone() || !validateSchool()) {
+                    allvalid = false;
                 }
-                if (!isValidEmail(email.getText())){
-                    allvalid=false;
-                    Toast.makeText(getApplicationContext(), "check your email", Toast.LENGTH_SHORT).show();
-                }
-                if (subject.getSelectedItemPosition()==0){
-                    allvalid=false;
+                if (subject.getSelectedItemPosition() == 0) {
+                    allvalid = false;
+                    requestFocus(subject);
                     Toast.makeText(getApplicationContext(), "choose a subject", Toast.LENGTH_SHORT).show();
                 }
-                if (allvalid && isOnline()){
-                    Toast.makeText(getApplicationContext(), "Succesfully login by:"+name.getText().toString(), Toast.LENGTH_SHORT).show();
+                if (allvalid && isOnline()) {
+                    Toast.makeText(getApplicationContext(), "Succesfully login by:" + name.getText().toString(), Toast.LENGTH_SHORT).show();
                     String role_post = "faculty";
                     String name_post = name.getText().toString();
                     String email_post = email.getText().toString();
                     String phnno_post = phn_no.getText().toString();
                     String fathername_post = "----";
-                    String fatheremail_post ="----";
+                    String fatheremail_post = "----";
                     String stream_post = "----";
-                    String yop_post="----";
+                    String yop_post = "----";
                     String parentcontact_post = "----";
-                    String subject_post=subject.getSelectedItem().toString();
+                    String subject_post = subject.getSelectedItem().toString();
                     String school_post = school_name.getText().toString();
 
-                    String[] details = {role_post, name_post, phnno_post, email_post, fathername_post, parentcontact_post, school_post,yop_post,stream_post,fatheremail_post,subject_post};
+                    String[] details = {role_post, name_post, phnno_post, email_post, fathername_post, parentcontact_post, school_post, yop_post, stream_post, fatheremail_post, subject_post};
 
                     String[] maildetails = {name_post, phnno_post, email_post};
                     Log.d("test1", details.toString());
                     new SendPostRequest().execute(details);
-                }else{
+                } else {
                     try {
                         AlertDialog alertDialog = new AlertDialog.Builder(getApplicationContext()).create();
 
@@ -111,10 +119,8 @@ public class Faculty_form extends AppCompatActivity implements AdapterView.OnIte
                         });
 
                         alertDialog.show();
-                    }
-                    catch(Exception e)
-                    {
-                        Log.d(TAG, "Show Dialog: "+e.getMessage());
+                    } catch (Exception e) {
+                        Log.d(TAG, "Show Dialog: " + e.getMessage());
                     }
                 }
             }
@@ -141,7 +147,7 @@ public class Faculty_form extends AppCompatActivity implements AdapterView.OnIte
         ConnectivityManager conMgr = (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo netInfo = conMgr.getActiveNetworkInfo();
 
-        if(netInfo == null || !netInfo.isConnected() || !netInfo.isAvailable()){
+        if (netInfo == null || !netInfo.isConnected() || !netInfo.isAvailable()) {
             Toast.makeText(this, "No Internet connection!", Toast.LENGTH_LONG).show();
             return false;
         }
@@ -242,13 +248,6 @@ public class Faculty_form extends AppCompatActivity implements AdapterView.OnIte
         }
     }
 
-    public final static boolean isValidEmail(CharSequence target) {
-        if (target == null) {
-            return false;
-        } else {
-            return android.util.Patterns.EMAIL_ADDRESS.matcher(target).matches();
-        }
-    }
 
     public String getPostDataString(JSONObject params) throws Exception {
 
@@ -275,5 +274,92 @@ public class Faculty_form extends AppCompatActivity implements AdapterView.OnIte
         return result.toString();
     }
 
+    private class MyTextWatcher implements TextWatcher {
+        private View view;
+
+        public MyTextWatcher(View view) {
+            this.view = view;
+        }
+
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+
+            switch (view.getId()) {
+                case R.id.recent_name:
+                    validateName();
+                    break;
+                case R.id.phn_no:
+                    validatePhone();
+                    break;
+                case R.id.email:
+                    validateEmail();
+                    break;
+                case R.id.school_name:
+                    validateSchool();
+                    break;
+            }
+
+        }
+    }
+
+    private boolean validateSchool() {
+        String target = school_name.getText().toString().trim();
+        if (target.isEmpty() || !target.matches("[a-zA-Z. ]*")) {
+            schoolInputLayout.setError(getString(R.string.err_msg_name));
+            requestFocus(school_name);
+            return false;
+        } else
+            schoolInputLayout.setErrorEnabled(false);
+        return true;
+    }
+
+    private boolean validateEmail() {
+        String target = email.getText().toString().trim();
+        if (target.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(target).matches()) {
+            emailInputLayout.setError(getString(R.string.err_msg_email));
+            requestFocus(email);
+            return false;
+        } else
+            emailInputLayout.setErrorEnabled(false);
+        return true;
+    }
+
+    private boolean validatePhone() {
+        String target = phn_no.getText().toString().trim();
+        if (target.isEmpty() || target.length() != 10) {
+            phoneInputLayout.setError(getString(R.string.err_msg_phone));
+            requestFocus(phn_no);
+            return false;
+        } else
+            phoneInputLayout.setErrorEnabled(false);
+        return true;
+    }
+
+    private boolean validateName() {
+        String target = name.getText().toString().trim();
+        if (target.isEmpty() || !target.matches("[a-zA-Z. ]*")) {
+            nameInputLayout.setError(getString(R.string.err_msg_name));
+            requestFocus(name);
+            return false;
+        } else
+            nameInputLayout.setErrorEnabled(false);
+        return true;
+    }
+
+    private void requestFocus(View view) {
+        if (view.requestFocus()) {
+            getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+        }
+    }
 }
 

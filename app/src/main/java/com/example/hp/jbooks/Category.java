@@ -1,11 +1,14 @@
 package com.example.hp.jbooks;
 
 import android.content.Intent;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 
@@ -60,18 +63,18 @@ public class Category extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_category);
-
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             id_subject = extras.getInt("id_subject");
             //The key argument here must match that used in the other activity
         }
-        if (id_subject==1){
-            HTTP_JSON_URL=HTTP_JSON_URL_BASE+"subject=0";
-        }else if (id_subject==2){
-            HTTP_JSON_URL=HTTP_JSON_URL_BASE+"subject=0";
-        }else {
-            HTTP_JSON_URL=HTTP_JSON_URL_BASE+"subject=0";
+        if (id_subject == 1) {
+            HTTP_JSON_URL = HTTP_JSON_URL_BASE + "subject=0";
+        } else if (id_subject == 2) {
+            HTTP_JSON_URL = HTTP_JSON_URL_BASE + "subject=0";
+        } else {
+            HTTP_JSON_URL = HTTP_JSON_URL_BASE + "subject=0";
         }
         categoryList = new ArrayList<>();
 
@@ -84,11 +87,13 @@ public class Category extends AppCompatActivity {
         recyclerViewlayoutManager = new LinearLayoutManager(this);
 
         recyclerView.setLayoutManager(recyclerViewlayoutManager);
+        recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
+
 
         progressBar.setVisibility(View.VISIBLE);
 
         CategoryNames = new ArrayList<>();
-        CategoryIds=new ArrayList<>();
+        CategoryIds = new ArrayList<>();
 
         JSON_DATA_WEB_CALL();
 
@@ -118,7 +123,8 @@ public class Category extends AppCompatActivity {
                     //Toast.makeText(Category.this, id, Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(Category.this, Contents.class);
                     intent.putExtra("id_subject", id_subject);
-                    intent.putExtra("category", CategoryIds.get(GetItemPosition));
+                    intent.putExtra("id_category", CategoryIds.get(GetItemPosition));
+                    intent.putExtra("category", CategoryNames.get(GetItemPosition));
                     startActivity(intent);
                 }
 
@@ -193,5 +199,16 @@ public class Category extends AppCompatActivity {
 
         recyclerView.setAdapter(recyclerViewadapter);
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                NavUtils.navigateUpFromSameTask(this);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

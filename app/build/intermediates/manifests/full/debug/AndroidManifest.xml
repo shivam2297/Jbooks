@@ -28,6 +28,26 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name="com.example.hp.jbooks.MainActivity"
+            android:parentActivityName="com.example.hp.jbooks.Login"
+            android:theme="@style/NoActionBar" />
+        <activity
+            android:name="com.example.hp.jbooks.Faculty_form"
+            android:parentActivityName="com.example.hp.jbooks.MainActivity"
+            android:theme="@style/NoActionBar" />
+        <activity
+            android:name="com.example.hp.jbooks.Parent_form"
+            android:parentActivityName="com.example.hp.jbooks.MainActivity"
+            android:theme="@style/NoActionBar" />
+        <activity
+            android:name="com.example.hp.jbooks.Student_form"
+            android:parentActivityName="com.example.hp.jbooks.MainActivity"
+            android:theme="@style/NoActionBar" />
+        <activity
+            android:name="com.example.hp.jbooks.Mainfile"
+            android:label="@string/title_activity_mainfile"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.example.hp.jbooks.Login"
             android:theme="@style/NoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -36,32 +56,26 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.hp.jbooks.Faculty_form"
-            android:theme="@style/NoActionBar" />
+            android:name="com.example.hp.jbooks.Category"
+            android:label="@string/title_activity_categories"
+            android:parentActivityName="com.example.hp.jbooks.Mainfile" />
         <activity
-            android:name="com.example.hp.jbooks.Parent_form"
-            android:theme="@style/NoActionBar" />
-        <activity
-            android:name="com.example.hp.jbooks.Student_form"
-            android:theme="@style/NoActionBar" />
-        <activity
-            android:name="com.example.hp.jbooks.Mainfile"
-            android:label="@string/title_activity_mainfile"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name="com.example.hp.jbooks.Login"
-            android:theme="@style/NoActionBar" />
-        <activity android:name="com.example.hp.jbooks.Category" />
-        <activity android:name="com.example.hp.jbooks.AboutUs" />
+            android:name="com.example.hp.jbooks.AboutUs"
+            android:label="@string/title_activity_aboutus"
+            android:parentActivityName="com.example.hp.jbooks.Mainfile" />
         <activity
             android:name="com.example.hp.jbooks.Contents"
-            android:label="@string/title_activity_contents" />
+            android:parentActivityName="com.example.hp.jbooks.Mainfile" />
         <activity
             android:name="com.example.hp.jbooks.WebViewpdf"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_web_view"
+            android:parentActivityName="com.example.hp.jbooks.Mainfile"
             android:theme="@style/FullscreenTheme" />
-        <activity android:name="com.example.hp.jbooks.Feedback" />
+        <activity
+            android:name="com.example.hp.jbooks.Feedback"
+            android:label="@string/title_activity_feedback"
+            android:parentActivityName="com.example.hp.jbooks.Mainfile" />
     </application>
 
 </manifest>

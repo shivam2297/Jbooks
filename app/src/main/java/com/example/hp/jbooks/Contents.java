@@ -1,12 +1,15 @@
 package com.example.hp.jbooks;
 
 import android.content.Intent;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.GestureDetector;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ProgressBar;
@@ -17,6 +20,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.hp.jbooks.database.DatabaseHelper;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -51,19 +55,27 @@ public class Contents extends AppCompatActivity {
     int GetItemPosition;
     int id_subject;
     int id_category;
+    String category;
+
+    private DatabaseHelper db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_contents);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        db = new DatabaseHelper(this);
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             id_subject = extras.getInt("id_subject");
-            id_category = extras.getInt("category");
+            id_category = extras.getInt("id_category");
+            category = extras.getString("category");
             //The key argument here must match that used in the other activity
         }
+
+        this.setTitle(category);
         HTTP_JSON_URL = HTTP_JSON_URL_BASE + "subject=0&" + "category=0";
         contentList = new ArrayList<>();
 
@@ -76,6 +88,8 @@ public class Contents extends AppCompatActivity {
         recyclerViewlayoutManager = new LinearLayoutManager(this);
 
         recyclerView.setLayoutManager(recyclerViewlayoutManager);
+        recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
+
 
         progressBar.setVisibility(View.VISIBLE);
 
@@ -103,10 +117,13 @@ public class Contents extends AppCompatActivity {
                     GetItemPosition = Recyclerview.getChildAdapterPosition(ChildView);
 
                     Toast.makeText(Contents.this, contentList.get(GetItemPosition).getName(), Toast.LENGTH_LONG).show();
-                    //Toast.makeText(Category.this, id, Toast.LENGTH_LONG).show();
                     String link = contentList.get(GetItemPosition).getLink();
+                    String name = contentList.get(GetItemPosition).getName();
+                    if (!db.checkRecent(link))
+                        db.insertRecent(name, link);
                     Intent intent = new Intent(Contents.this, WebViewpdf.class);
                     intent.putExtra("link", link);
+                    intent.putExtra("name", name);
                     startActivity(intent);
                 }
 
@@ -134,7 +151,7 @@ public class Contents extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONArray response) {
 
-                        Log.d("response", response.toString());
+                        Log.w("response", response.toString());
                         progressBar.setVisibility(View.GONE);
 
                         JSON_PARSE_DATA_AFTER_WEBCALL(response);
@@ -154,6 +171,7 @@ public class Contents extends AppCompatActivity {
 
     public void JSON_PARSE_DATA_AFTER_WEBCALL(JSONArray array) {
 
+
         for (int i = 0; i < array.length(); i++) {
 
             Subject_Contents GetDataAdapter2 = new Subject_Contents();
@@ -163,7 +181,8 @@ public class Contents extends AppCompatActivity {
                 json = array.getJSONObject(i);
                 GetDataAdapter2.setId(json.getString(GET_JSON_FROM_SERVER_ID));
                 GetDataAdapter2.setName(json.getString(GET_JSON_FROM_SERVER_NAME));
-                GetDataAdapter2.setLink(GET_JSON_FROM_SERVER_LINK);
+                GetDataAdapter2.setLink(json.getString(GET_JSON_FROM_SERVER_LINK));
+                Log.w("response", GetDataAdapter2.getLink());
                 //Toast.makeText(Category.this,json.getString(GET_JSON_FROM_SERVER_NAME)+" "+id, Toast.LENGTH_LONG).show();
 
 
@@ -180,4 +199,14 @@ public class Contents extends AppCompatActivity {
 
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                NavUtils.navigateUpFromSameTask(this);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 }

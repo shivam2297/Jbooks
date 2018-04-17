@@ -9,12 +9,12 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -37,7 +37,7 @@ import javax.net.ssl.HttpsURLConnection;
 
 public class Parent_form extends AppCompatActivity {
 
-    EditText name, phn_no, email, parent_name, parent_no, parent_email, school_name, role;
+    TextInputEditText name, phn_no, email, parent_name, parent_no, parent_email, school_name, role;
     Spinner stream;
     private String TAG = "network test";
     FloatingActionButton parent_submit_btn;
@@ -47,13 +47,13 @@ public class Parent_form extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_parent_form);
-        name=(EditText)findViewById(R.id.name);
-        phn_no=(EditText)findViewById(R.id.phn_no);
-        email=(EditText)findViewById(R.id.email);
-        parent_email=(EditText)findViewById(R.id.parent_email);
-        parent_name=(EditText)findViewById(R.id.parent_name);
-        parent_no=(EditText)findViewById(R.id.parent_no);
-        school_name=(EditText)findViewById(R.id.school_name);
+        name= (TextInputEditText) findViewById(R.id.recent_name);
+        phn_no= (TextInputEditText) findViewById(R.id.phn_no);
+        email= (TextInputEditText) findViewById(R.id.email);
+        parent_email= (TextInputEditText) findViewById(R.id.parent_email);
+        parent_name= (TextInputEditText) findViewById(R.id.parent_name);
+        parent_no= (TextInputEditText) findViewById(R.id.parent_no);
+        school_name= (TextInputEditText) findViewById(R.id.school_name);
         stream=(Spinner)findViewById(R.id.stream);
         parent_submit_btn= (FloatingActionButton) findViewById(R.id.parent_submit_btn);
 

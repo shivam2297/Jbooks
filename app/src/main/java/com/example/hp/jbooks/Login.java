@@ -10,13 +10,16 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.support.design.widget.TextInputEditText;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
+import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,37 +39,66 @@ import java.util.Iterator;
 import javax.net.ssl.HttpsURLConnection;
 
 public class Login extends AppCompatActivity {
-EditText login;
+    TextInputEditText login;
+    TextInputLayout loginInputLayout;
     private String TAG = "network test";
     FloatingActionButton signin_btn;
     TextView signup;
-    private Boolean firstTime = null;
-    SharedPreferences sharedpreferences;
+    private Boolean loggedIn = true;
+    SharedPreferences mpreference;
     public static final String mypreference = "mypref";
+    public static final String UserId = "userId";
     public static final String Name = "nameKey";
     public static final String Email = "emailKey";
     private ProgressDialog pDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (isLoggedIn())
+            startActivity(new Intent(Login.this, Mainfile.class));
         setContentView(R.layout.activity_login);
-        login=(EditText)findViewById(R.id.login);
-        signin_btn=(FloatingActionButton) findViewById(R.id.signin_btn);
-        signup=(TextView)findViewById(R.id.signup);
+        login = (TextInputEditText) findViewById(R.id.login);
+        loginInputLayout = (TextInputLayout) findViewById(R.id.loginTextLayout);
+        signin_btn = (FloatingActionButton) findViewById(R.id.signin_btn);
+        signup = (TextView) findViewById(R.id.signup);
+
+        login.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if (!Patterns.EMAIL_ADDRESS.matcher(login.getText().toString().trim()).matches()) {
+                    loginInputLayout.setError(getString(R.string.err_msg_email));
+                    if (login.requestFocus()) {
+                        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+                    }
+                } else
+                    loginInputLayout.setErrorEnabled(false);
+            }
+        });
 
         signin_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                boolean allvalid=true;
-                if (login.getText().toString().matches("") ) {
-                    allvalid=false;
+                boolean allvalid = true;
+                if (login.getText().toString().matches("")) {
+                    allvalid = false;
                     Toast.makeText(getApplicationContext(), "Fill The Email ID", Toast.LENGTH_SHORT).show();
                 }
-                if (allvalid && isOnline()){
+                if (allvalid && isOnline()) {
                     new SendPostRequest().execute(login.getText().toString());
                     //if else checking
-                }else{
+                } else {
                     try {
                         AlertDialog alertDialog = new AlertDialog.Builder(getApplicationContext()).create();
 
@@ -81,10 +113,8 @@ EditText login;
                         });
 
                         alertDialog.show();
-                    }
-                    catch(Exception e)
-                    {
-                        Log.d(TAG, "Show Dialog: "+e.getMessage());
+                    } catch (Exception e) {
+                        Log.d(TAG, "Show Dialog: " + e.getMessage());
                     }
                 }
                 /*Intent intent=new Intent(Login.this,Mainfile.class);
@@ -95,23 +125,21 @@ EditText login;
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(Login.this,MainActivity.class);
+                Intent intent = new Intent(Login.this, MainActivity.class);
                 startActivity(intent);
             }
         });
     }
-    private boolean isFirstTime() {
-        if (firstTime == null) {
-            SharedPreferences mPreferences = this.getSharedPreferences(mypreference, Context.MODE_PRIVATE);
-            firstTime = mPreferences.getBoolean("firstTime", true);
-            if (firstTime) {
-                SharedPreferences.Editor editor = mPreferences.edit();
-                editor.putBoolean("firstTime", false);
-                editor.commit();
-            }
-        }
-        return firstTime;
+
+    private boolean isLoggedIn() {
+        mpreference = this.getSharedPreferences(getResources().getString(R.string.sharedPreferenceKey), Context.MODE_PRIVATE);
+        if (!mpreference.contains(getResources().getString(R.string.preferenceLoggedInKey)) || !mpreference.getBoolean(getResources().getString(R.string.preferenceLoggedInKey), false))
+            loggedIn = false;
+        else
+            loggedIn = true;
+        return loggedIn;
     }
+
     @Override
     public void onBackPressed() {
         new AlertDialog.Builder(this)
@@ -122,20 +150,23 @@ EditText login;
 
                     public void onClick(DialogInterface arg0, int arg1) {
                         //Login.super.onBackPressed();
-                        finish();
+                        moveTaskToBack(true);
+                        Login.this.finish();
                     }
                 }).create().show();
     }
+
     public boolean isOnline() {
         ConnectivityManager conMgr = (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo netInfo = conMgr.getActiveNetworkInfo();
 
-        if(netInfo == null || !netInfo.isConnected() || !netInfo.isAvailable()){
+        if (netInfo == null || !netInfo.isConnected() || !netInfo.isAvailable()) {
             Toast.makeText(this, "No Internet connection!", Toast.LENGTH_LONG).show();
             return false;
         }
         return true;
     }
+
     public class SendPostRequest extends AsyncTask<String, Void, String> {
 
         protected void onPreExecute() {
@@ -195,6 +226,8 @@ EditText login;
                     return new String("false : " + responseCode);
                 }
             } catch (Exception e) {
+                e.printStackTrace();
+                startActivity(new Intent(Login.this, Login.class));
                 return new String("Exception: " + e.getMessage());
             }
 
@@ -209,31 +242,31 @@ EditText login;
                 JSONObject jsonObj = new JSONObject(result);
                 int code = (int) jsonObj.get("code");
                 String message = (String) jsonObj.get("message");
-                if (code==1){
+                if (code == 1) {
                     String name = (String) jsonObj.get("name");
-                    Toast.makeText(getApplicationContext(), "Successfully login By : "+name,
+                    Toast.makeText(getApplicationContext(), "Successfully login By : " + name,
                             Toast.LENGTH_LONG).show();
-                    sharedpreferences=getSharedPreferences(mypreference,Context.MODE_PRIVATE);
-                    SharedPreferences.Editor editor = sharedpreferences.edit();
+                    mpreference = getSharedPreferences(getResources().getString(R.string.sharedPreferenceKey), Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = mpreference.edit();
                     editor.putString(Name, name);
                     editor.putString(Email, login.getText().toString());
+                    editor.putBoolean(getResources().getString(R.string.preferenceLoggedInKey), true);
                     editor.commit();
-                    Intent intent=new Intent(Login.this,Mainfile.class);
-                    intent.putExtra("name", name);
-                    intent.putExtra("email", login.getText().toString());
+                    Intent intent = new Intent(Login.this, Mainfile.class);
                     startActivity(intent);
-                }else if (code==0){
+                } else if (code == 0) {
                     Toast.makeText(getApplicationContext(), "Please visit the registered Mail ID and open the link",
                             Toast.LENGTH_LONG).show();
-                }else if (code==-1){
+                } else if (code == -1) {
                     Toast.makeText(getApplicationContext(), "Ivalid Email Id Given Sign Up again !!!",
                             Toast.LENGTH_LONG).show();
-                }else{
-                    Toast.makeText(getApplicationContext(),"Invalid json response",
+                } else {
+                    Toast.makeText(getApplicationContext(), "Invalid json response",
                             Toast.LENGTH_LONG).show();
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
+                startActivity(new Intent(Login.this, Login.class));
             }
 
             // typecasting obj to JSONObject

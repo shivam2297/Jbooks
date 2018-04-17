@@ -5,7 +5,7 @@ package com.example.hp.jbooks;
  */
 
 public class Subject_Contents {
-    String id, name, description,link;
+    String id, name, description,link, timestamp;
 
     public String getId() {
         return id;
@@ -39,5 +39,11 @@ public class Subject_Contents {
         this.link = link;
     }
 
+    public String getTimestamp() {
+        return timestamp;
+    }
 
+    public void setTimestamp(String timestamp) {
+        this.timestamp = timestamp;
+    }
 }

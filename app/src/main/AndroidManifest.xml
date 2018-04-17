@@ -18,6 +18,26 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
+            android:parentActivityName=".Login"
+            android:theme="@style/NoActionBar" />
+        <activity
+            android:name=".Faculty_form"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/NoActionBar" />
+        <activity
+            android:name=".Parent_form"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/NoActionBar" />
+        <activity
+            android:name=".Student_form"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/NoActionBar" />
+        <activity
+            android:name=".Mainfile"
+            android:label="@string/title_activity_mainfile"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Login"
             android:theme="@style/NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,32 +46,26 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Faculty_form"
-            android:theme="@style/NoActionBar" />
+            android:name=".Category"
+            android:label="@string/title_activity_categories"
+            android:parentActivityName=".Mainfile" />
         <activity
-            android:name=".Parent_form"
-            android:theme="@style/NoActionBar" />
-        <activity
-            android:name=".Student_form"
-            android:theme="@style/NoActionBar" />
-        <activity
-            android:name=".Mainfile"
-            android:label="@string/title_activity_mainfile"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".Login"
-            android:theme="@style/NoActionBar" />
-        <activity android:name=".Category" />
-        <activity android:name=".AboutUs" />
+            android:name=".AboutUs"
+            android:label="@string/title_activity_aboutus"
+            android:parentActivityName=".Mainfile" />
         <activity
             android:name=".Contents"
-            android:label="@string/title_activity_contents" />
+            android:parentActivityName=".Mainfile" />
         <activity
             android:name=".WebViewpdf"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_web_view"
+            android:parentActivityName=".Mainfile"
             android:theme="@style/FullscreenTheme" />
-        <activity android:name=".Feedback"></activity>
+        <activity
+            android:name=".Feedback"
+            android:label="@string/title_activity_feedback"
+            android:parentActivityName=".Mainfile" />
     </application>
 
 </manifest>
